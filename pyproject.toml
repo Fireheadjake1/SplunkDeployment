@@ -3,13 +3,16 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "python_template"
+name = "splunk_deployer"
 dynamic = ["version"]
-description = ""
+description = "Splunk"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "fabric",
+    "loguru",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -67,8 +70,7 @@ addopts = "-ra --strict-markers"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["*"]
-exclude = ["tests"]
+include = ["splunk_deployer"]
 
 [tool.setuptools.dynamic]
 version = {file = ["VERSION.txt"]}
