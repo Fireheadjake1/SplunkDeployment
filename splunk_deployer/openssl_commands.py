@@ -17,7 +17,8 @@ def create_csr_cmd(key_path: Path, csr_path: Path, common_name: str) -> str:
 def sign_csr_cmd(ca_cert: Path, ca_key: Path, csr_path: Path, server_cert: Path) -> str:
     return f'openssl x509 -req -in {csr_path} -CA {ca_cert} -CAkey {ca_key} -CAcreateserial -days 365 -sha256 -extfile <(printf "basicConstraints=CA:FALSE\nkeyUsage=digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth") -out {server_cert}'
 
-
+def create_hostname_cmd(hostname: str, password: str):
+    return f'hostnamectl set-hostname {hostname}'
 
 #stdinput < hostname
 #ssh -> hostname
